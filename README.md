@@ -29,7 +29,7 @@ $ rails generate acts_as_hoc_user:hoc_user NAME FIELDS
 
 Eg.
 ```bash
-$ rails generate hoc_user user name:string age:integer phone_number:string address:string zip:string
+$ rails generate acts_as_hoc_user:hoc_user user name:string age:integer phone_number:string address:string zip:string
 ```
 Which will generate the following migration:
 ```ruby

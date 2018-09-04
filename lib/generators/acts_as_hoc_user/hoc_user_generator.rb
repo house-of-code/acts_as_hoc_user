@@ -6,7 +6,7 @@ module ActsAsHocUser
       desc "Create a HocUser model and migrations " +
       "The NAME argument is the name of your model, and the following " +
       "arguments are the fields to add. Eg. hoc_user user name:string"
-
+      argument :name, :required => true, :type => :string, :desc => "name of the model.",
       argument :fields, :required => false, :type => :array, :desc => "The fields to app.",
       :banner => "name:string age:integer ..."
 

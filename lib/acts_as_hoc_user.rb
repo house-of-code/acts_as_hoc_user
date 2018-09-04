@@ -16,7 +16,7 @@ module ActsAsHocUser
 
     def configuration
       @configuration = nil unless defined?(@configuration)
-      @configuration || LOCK.synchronize { @configuration ||= ActsAsHocPushable::Configuration.new }
+      @configuration || LOCK.synchronize { @configuration ||= ActsAsHocUser::Configuration.new }
     end
   end
 end

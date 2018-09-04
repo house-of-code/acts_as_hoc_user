@@ -34,7 +34,7 @@
         has_secure_password
         validates_presence_of :email
         validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-        validates :password, length: { minimum: ActsAsHocUser.configuration.min_password_length ||= 6 }, if: -> { password.present? }
+        validates :password, length: { minimum: ActsAsHocUser.configuration.min_password_length }, if: -> { password.present? }
       end
     end
   end

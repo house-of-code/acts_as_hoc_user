@@ -1,0 +1,16 @@
+class <%= migration_class_name %> < ActiveRecord::Migration<%= migration_version %>
+  def self.up
+    create_table :<%= table_name %> do |t|
+      t.string :email, index: {unique: true}, null: false
+      t.string :password_digest
+      <% migration_colums.each do |column| -%>
+      <%= column %>
+      <% end -%>
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :<%= table_name %>
+  end
+end

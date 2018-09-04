@@ -1,7 +1,7 @@
 require 'rails/generators/active_record'
 module ActsAsHocUser
   module Generators
-    class HocUserGenerator < ActiveRecord::Generators::Base
+    class HocUserGenerator < Rails::Generators::Base
       include Rails::Generators::Migration
       desc "Create a HocUser model and migrations " +
       "The NAME argument is the name of your model, and the following " +

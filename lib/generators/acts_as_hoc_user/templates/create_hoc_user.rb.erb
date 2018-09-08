@@ -8,6 +8,9 @@ class <%= migration_class_name %> < ActiveRecord::Migration<%= migration_version
       <% end -%>
       t.timestamps
     end
+    <% migration_indexes.each do |index| -%>
+    add_index :<%= table_name%>, :<%= index %>
+    <% end -%>
   end
 
   def self.down

@@ -5,10 +5,10 @@ module ActsAsHocUser
 
       desc "Create a HocUser model and migrations " +
       "The NAME argument is the name of your model, and the following " +
-      "arguments are the fields to add. Eg. acts_as_hoc_user:hoc_user user name:string"
+      "arguments are the fields to add. Eg. acts_as_hoc_user:hoc_user user name:string:index"
 
       argument :fields, :required => false, :type => :array, :desc => "The fields to add.",
-      :banner => "name:string age:integer ..."
+      :banner => "name:string:index age:integer ..."
 
       def self.source_root
         @source_root ||= File.expand_path('../templates', __FILE__)
@@ -22,13 +22,21 @@ module ActsAsHocUser
           "db/migrate/#{migration_file_name}",
           migration_version: migration_version)
       end
-      
+
       def model_name
         name.underscore
       end
 
       def migration_colums
-        return fields.map { |field| "t.#{field.split(":").last} :#{field.split(":").first}" } unless fields.nil?
+        return fields.map { |field| "t.#{field.split(":").second} :#{field.split(":").first}" } unless fields.nil?
+        return []
+      end
+
+      def migration_indexes
+        return fields.select { |field|
+          elems = field.split(":")
+          "#{elems.third}" if elems.count > 2
+        } unless fields.nil?
         return []
       end
 

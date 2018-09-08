@@ -33,10 +33,10 @@ module ActsAsHocUser
       end
 
       def migration_indexes
-        return fields.select { |field|
+        return fields.map { |field|
           elems = field.split(":")
-          "#{elems.third}" if elems.count > 2
-        } unless fields.nil?
+          elems.second if elems.count > 2
+        }.compact unless fields.nil?
         return []
       end
 

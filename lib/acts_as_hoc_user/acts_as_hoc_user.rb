@@ -12,7 +12,8 @@
     module ClassMethods
       def authenticate_with_credentials(email, password, expiration = 14.days.from_now)
         user = User.find_by(email:email)
-        return user.authentication_token(expiration) if user && user.authenticate(password)
+        return nil if user.nil?
+        return user.authentication_token(expiration) if user.authenticate(password)
         nil
       end
 

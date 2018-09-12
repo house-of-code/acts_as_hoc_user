@@ -3,6 +3,7 @@ class <%= migration_class_name %> < ActiveRecord::Migration<%= migration_version
     create_table :<%= table_name %> do |t|
       t.string :email, index: {unique: true}, null: false
       t.string :password_digest
+      t.string :name, null: false, default: ''
       <% migration_colums.each do |column| -%>
       <%= column %>
       <% end -%>

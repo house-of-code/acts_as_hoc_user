@@ -29,7 +29,7 @@ $ rails generate acts_as_hoc_user:hoc_user NAME FIELDS
 
 Eg.
 ```bash
-$ rails generate acts_as_hoc_user:hoc_user user name:string age:integer phone_number:string address:string zip:string
+$ rails generate acts_as_hoc_user:hoc_user user age:integer phone_number:string address:string zip:string
 ```
 Which will generate the following migration:
 ```ruby
@@ -66,11 +66,12 @@ and initializer
 #config/initializers/acts_as_hoc_user.rb
 ActsAsHocUser.configure do |config|
   config.min_password_length = 6
+  config.acts_as_hoc_user_secret = 'a very secret string'
 end
 ```
 
 ### Manual usage
-If you prefer you can create the model yourself. Just make sure that the model has email:string and password_digest:string fields and add `acts_as_hoc_user` to the model
+If you prefer you can create the model yourself. Just make sure that the model has email:string, name:string and password_digest:string fields and add `acts_as_hoc_user` to the model
 
 ### Authenticate user
 

@@ -17,6 +17,12 @@
         nil
       end
 
+      def authenticate_with_sso_token(token)
+        user = User.find_by(sso_token: token)
+        return nil if user.nil?
+        return user.authentication_token(expiration)
+      end
+      
       def authenticate_with_authentication_token(token)
         decoded_auth_token = JsonWebToken.decode(token)
         return nil if decoded_auth_token.nil?

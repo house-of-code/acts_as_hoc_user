@@ -4,6 +4,7 @@ class <%= migration_class_name %> < ActiveRecord::Migration<%= migration_version
       t.string :email, index: {unique: true}, null: false
       t.string :password_digest
       t.string :name, null: false, default: ''
+      t.string :sso_token, null: true
       <% migration_colums.each do |column| -%>
       <%= column %>
       <% end -%>
